@@ -197,7 +197,7 @@ body {
 }
 
 /* Media Queries */
-@media (max-width: 1280px) {
+@media (max-width: 1023px) {
 
     .navbar {
         width: 90%;
@@ -248,7 +248,7 @@ body {
     }
 
     .sidebar-links a::after {
-        background: #D4D4D4;
+        background: #DAA520;
     }
 
     .navbar-brand h1 {
