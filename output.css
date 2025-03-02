@@ -1,4 +1,6 @@
 body {
+    margin: 0px;
+    padding: 0px;
     background-color: #EDEDED;
     height: 5000px;
     font-family: 'Poppins', sans-serif;
@@ -7,15 +9,15 @@ body {
 /* Background Image */
 .background-image {
     position: relative;
-    width: 80%;
-    height: 100vh;
+    width: 90%;
+    height: 95vh;
     background-image: url('./bg.png');
-    margin: 0 auto;
+    margin: 30px auto 0;
     z-index: -2;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: scroll;
+    background-attachment: fixed;
     border: 2px solid #B8860B;
     border-top: 0;
 }
@@ -52,17 +54,16 @@ body {
 
 /* Navbar Styles */
 .navbar {
-    width: 95%;
-    padding: 20px;
-    margin: 50px auto 0;
-    position: sticky;
+    width: 100%;
+    padding: 10px;
+    margin: 0 auto;
+    position: fixed;
     z-index: 0;
-    top: 10px;
+    top: 0;
     box-shadow: 0 4px 8px 0 rgba(184, 134, 11, 0.1), 0 6px 20px 0 rgba(184, 134, 11, 0.05);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-radius: 5px;
     background-color: #FFFFFF;
 }
 
@@ -70,7 +71,7 @@ body {
     display: inline-flex;
     gap: 3vw;
     width: 40%;
-    margin-left: 7.3vw;
+    margin-left: 0.5vw;
 }
 
 .navbar-brand {
@@ -92,7 +93,7 @@ body {
     color: #1A1A1A;
     font-weight: 500;
     text-decoration: none;
-    font-size: 1.05vw;
+    font-size: 0.85vw;
     padding: 0.5rem 0;
     display: flex;
     align-items: center;
@@ -135,7 +136,7 @@ body {
 }
 
 .social-links a:hover {
-    transform: scale(1.5);
+    transform: scale(1.25);
 }
 
 /* Social Media Icon Backgrounds */
@@ -159,7 +160,7 @@ body {
     height: 30px;
     width: 35px;
     cursor: pointer;
-    margin-left: 5vw;
+    margin-left: 0.5vw;
 }
 
 .navbar-hamburger .hamburger-bar {
@@ -199,10 +200,6 @@ body {
 
 /* Media Queries */
 @media (max-width: 1023px) {
-
-    .navbar {
-        width: 90%;
-    }
 
     .navbar-links {
         display: none;
