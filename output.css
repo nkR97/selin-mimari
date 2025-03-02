@@ -9,7 +9,7 @@ body {
 /* Background Image */
 .background-image {
     position: relative;
-    width: 90%;
+    width: calc(95% - 75px);
     height: 95vh;
     background-image: url('./bg.png');
     margin: 30px auto 0;
@@ -199,6 +199,7 @@ body {
 }
 
 /* Media Queries */
+
 @media (max-width: 1023px) {
 
     .navbar-links {
