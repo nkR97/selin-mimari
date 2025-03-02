@@ -82,11 +82,12 @@ body {
 }
 
 .navbar-brand h1 {
-    font-family: 'Handlee', cursive;
-    font-size: 2rem;
-    color: #1A1A1A;
-    padding: 0;
-    margin: 0;
+    font-family: 'Cormorant', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-links a {
@@ -218,6 +219,11 @@ body {
     .social-links a:hover {
         transform: scale(1);
     }
+
+    .background-image {
+        background-attachment: scroll;
+    }
+
 }
 
 @media (prefers-color-scheme: dark) {
