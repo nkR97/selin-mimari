@@ -17,7 +17,7 @@ window.onload = function() {
         setTimeout(() => {
             bgElement.style.backgroundImage = `url('${bg[counter]}')`; // Change the background image
             bgElement.classList.remove('fade-out'); // Remove fade-out effect to start fade-in
-        }, 300); // Shorter delay to match the 300ms opacity transition (from CSS)
+        }, 500); // Shorter delay to match the 300ms opacity transition (from CSS)
     }
 
     function resetInterval() {
