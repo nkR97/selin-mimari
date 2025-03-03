@@ -1,28 +1,81 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
 body {
-    margin: 0px;
-    padding: 0px;
     background-color: #EDEDED;
     height: 5000px;
     font-family: 'Poppins', sans-serif;
 }
 
 /* Background Image */
-.background-image {
+.background-container {
     position: relative;
-    width: calc(95% - 75px);
+    width: calc(90% - 75px);
     height: 95vh;
-    background-image: url('./bg.png');
     margin: 30px auto 0;
-    z-index: -2;
+    z-index: 0;
+}
+
+#bg {
+    width: 100%;
+    height: 100%;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    border: 2px solid #B8860B;
-    border-top: 0;
+    transition: opacity 0.5s ease-in-out;
+    opacity: 1;
 }
 
-/* Sidebar Links */
+#bg.fade-out {
+    opacity: 0;
+}
+
+.previous,
+.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2.5rem;
+    height: 2.5rem;
+    border: none;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(4px);
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.previous {
+    left: 0.3%;
+}
+
+.next {
+    right: 0.3%;
+}
+
+.previous:hover,
+.next:hover {
+    background-color: rgba(184, 134, 11, 0.8);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.previous svg,
+.next svg {
+    width: 24px;
+    height: 24px;
+    stroke: #fff;
+    stroke-width: 2;
+}
+
 .sidebar-links {
     padding: 6rem 2rem;
     display: flex;
@@ -52,13 +105,12 @@ body {
     transform-origin: left;
 }
 
-/* Navbar Styles */
 .navbar {
     width: 100%;
     padding: 10px;
     margin: 0 auto;
     position: fixed;
-    z-index: 0;
+    z-index: 10;
     top: 0;
     box-shadow: 0 4px 8px 0 rgba(184, 134, 11, 0.1), 0 6px 20px 0 rgba(184, 134, 11, 0.05);
     display: flex;
@@ -116,7 +168,6 @@ body {
     width: 100%;
 }
 
-/* Social Media Links */
 .social-links {
     position: fixed;
     left: 1%;
@@ -140,7 +191,6 @@ body {
     transform: scale(1.25);
 }
 
-/* Social Media Icon Backgrounds */
 .social-links .insta {
     background-image: url('./insta.png');
 }
@@ -153,7 +203,6 @@ body {
     background-image: url('./twitter.png');
 }
 
-/* Hamburger Menu */
 .navbar-hamburger {
     display: none;
     flex-direction: column;
@@ -170,7 +219,6 @@ body {
     width: 100%;
 }
 
-/* Sidebar Styles for Small Screens */
 .sidebar-container {
     display: block;
     position: fixed;
@@ -199,34 +247,11 @@ body {
     color: #1A1A1A;
 }
 
-/* Media Queries */
-
-@media (max-width: 1023px) {
-
-    .navbar-links {
-        display: none;
-    }
-
-    .navbar-hamburger {
-        display: flex;
-    }
-
-    .social-links a {
-        width: 24px;
-        height: 24px;
-    }
-
-    .social-links a:hover {
-        transform: scale(1);
-    }
-
-    .background-image {
-        background-attachment: scroll;
-    }
-
-}
-
 @media (prefers-color-scheme: dark) {
+    .background-image {
+        border: 1px solid #DAA520;
+    }
+
     body {
         background-color: #1C1C1C;
     }
@@ -268,13 +293,6 @@ body {
         color: #D4D4D4;
     }
 
-    .background-image {
-        background-image: url('./bg-invert.png');
-        border: 2px solid #DAA520;
-        border-top: 0;
-    }
-
-    /* Dark Mode Social Media Icons */
     .social-links .insta {
         background-image: url('./insta-invert.png');
     }
@@ -285,5 +303,33 @@ body {
 
     .social-links .twitter {
         background-image: url('./twitter-invert.png');
+    }
+}
+
+@media (max-width: 1023px) {
+    .navbar-links {
+        display: none;
+    }
+
+    .navbar-hamburger {
+        display: flex;
+    }
+
+    .social-links a {
+        width: 24px;
+        height: 24px;
+    }
+
+    .social-links a:hover {
+        transform: scale(1);
+    }
+
+    #bg {
+        background-attachment: scroll;
+        background-size: cover;
+    }
+
+    .background-container button {
+        display: none;
     }
 }
