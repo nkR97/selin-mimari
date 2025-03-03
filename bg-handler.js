@@ -8,38 +8,65 @@ window.onload = function() {
     let bgElement = document.getElementById('bg');
     let previousButton = document.getElementById('previous');
     let nextButton = document.getElementById('next');
+    let dots = document.querySelectorAll('.dots');
     
     let counter = 0;
     let interval;
 
-    function updateBackground() {
-        bgElement.classList.add('fade-out'); // Start fade-out effect
+    function updateBackground(oldCounter) {
+        bgElement.classList.add('fade-out');
         setTimeout(() => {
-            bgElement.style.backgroundImage = `url('${bg[counter]}')`; // Change the background image
-            bgElement.classList.remove('fade-out'); // Remove fade-out effect to start fade-in
-        }, 500); // Shorter delay to match the 300ms opacity transition (from CSS)
+            // Update dot states
+            if (oldCounter !== undefined) {
+                document.getElementById(oldCounter.toString()).classList.remove("current");
+            }
+            document.getElementById(counter.toString()).classList.add("current");
+            
+            // Update background
+            bgElement.style.backgroundImage = `url('${bg[counter]}')`;
+            bgElement.classList.remove('fade-out');
+        }, 300);
     }
 
     function resetInterval() {
         clearInterval(interval);
-        interval = setInterval(function() {
+        interval = setInterval(() => {
+            const oldCounter = counter;
             counter = (counter + 1) % bg.length;
-            updateBackground();
-        }, 5000); // Interval to change background every 5 seconds
+            updateBackground(oldCounter);
+        }, 5000);
     }
 
-    updateBackground();
+    // Initialize
+    document.getElementById(counter).classList.add("current");
+    bgElement.style.backgroundImage = `url('${bg[counter]}')`;
     resetInterval();
 
-    previousButton.addEventListener('click', function() {
-        counter = (counter - 1 + bg.length) % bg.length; // Decrement counter and loop back
-        updateBackground();
-        resetInterval(); // Reset the interval to maintain the 5-second timing
+    // Navigation buttons
+    previousButton.addEventListener('click', () => {
+        const oldCounter = counter;
+        counter = (counter - 1 + bg.length) % bg.length;
+        updateBackground(oldCounter);
+        resetInterval();
     });
 
-    nextButton.addEventListener('click', function() {
-        counter = (counter + 1) % bg.length; // Increment counter and loop back
-        updateBackground();
-        resetInterval(); // Reset the interval to maintain the 5-second timing
+    nextButton.addEventListener('click', () => {
+        const oldCounter = counter;
+        counter = (counter + 1) % bg.length;
+        updateBackground(oldCounter);
+        resetInterval();
+    });
+
+    // Dot click handlers
+    dots.forEach(dot => {
+        dot.addEventListener('click', function() {
+            const newIndex = parseInt(this.id);
+            if (newIndex === counter) return;
+            
+            const oldCounter = counter;
+            counter = newIndex;
+            updateBackground(oldCounter);
+            resetInterval();
+        });
     });
 };
